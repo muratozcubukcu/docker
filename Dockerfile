@@ -1,2 +1,3 @@
 FROM alpine:3.20
-CMD ["true"] 
+ARG BUILD_ID
+LABEL build_id=$BUILD_ID

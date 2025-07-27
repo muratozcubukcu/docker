@@ -24,11 +24,10 @@ jobs:
 
       - name: Build Docker image (force new SHA)
         run: |
-          echo "Forcing new Docker build..."
-          docker build --no-cache -t my-terraform-app:${GITHUB_RUN_ID} .
+          docker build \
+            --build-arg BUILD_ID=$(date +%s) \
+            -t my-terraform-app:${GITHUB_RUN_ID} .
           docker inspect --format='{{.Id}}' my-terraform-app:${GITHUB_RUN_ID} > image-sha.txt
-          echo "New SHA recorded:"
-          cat image-sha.txt
 
       - name: Commit and push image-sha.txt
         run: |
