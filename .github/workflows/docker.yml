@@ -25,7 +25,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-terraform-app .
-          docker inspect --format='{{index .Id}}' my-terraform-app > image-sha.txt
+          docker inspect --format='{{index .Id}}' my-app > image-sha.txt
 
       - name: Commit and push image-sha.txt
         run: |
