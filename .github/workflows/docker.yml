@@ -22,10 +22,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
+      - name: Build Docker image (no cache)
         run: |
           docker build --no-cache -t my-terraform-app .
           docker inspect --format='{{index .Id}}' my-terraform-app > image-sha.txt
+
 
 
       - name: Commit and push image-sha.txt
