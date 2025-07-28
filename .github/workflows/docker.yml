@@ -26,8 +26,8 @@ jobs:
         run: |
           docker build \
             --build-arg BUILD_ID=$(date +%s) \
-            -t my-terraform-app:${GITHUB_RUN_ID} .
-          docker inspect --format='{{.Id}}' my-terraform-app:${GITHUB_RUN_ID} > image-sha.txt
+            -t my-app:${GITHUB_RUN_ID} .
+          docker inspect --format='{{.Id}}' my-app:${GITHUB_RUN_ID} > image-sha.txt
 
       - name: Commit and push image-sha.txt
         run: |
